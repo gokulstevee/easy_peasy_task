@@ -854,10 +854,10 @@
                 // className selector
               } else if (
                 (m = match[3]) &&
-                support.getElementsByclassNameName &&
-                context.getElementsByclassNameName
+                support.getElementsByclassName &&
+                context.getElementsByclassName
               ) {
-                push.apply(results, context.getElementsByclassNameName(m));
+                push.apply(results, context.getElementsByclassName(m));
                 return results;
               }
             }
@@ -1221,8 +1221,8 @@
         // Verify that getAttribute really returns attributes and not properties
         // (excepting IE8 booleans)
         support.attributes = assert(function (el) {
-          el.classNameName = 'i';
-          return !el.getAttribute('classNameName');
+          el.className = 'i';
+          return !el.getAttribute('className');
         });
 
         /* getElement(s)By*
@@ -1235,8 +1235,8 @@
         });
 
         // Support: IE<9
-        support.getElementsByclassNameName = rnative.test(
-          document.getElementsByclassNameName
+        support.getElementsByclassName = rnative.test(
+          document.getElementsByclassName
         );
 
         // Support: IE<10
@@ -1347,13 +1347,13 @@
 
         // className
         Expr.find['className'] =
-          support.getElementsByclassNameName &&
-          function (classNameName, context) {
+          support.getElementsByclassName &&
+          function (className, context) {
             if (
-              typeof context.getElementsByclassNameName !== 'undefined' &&
+              typeof context.getElementsByclassName !== 'undefined' &&
               documentIsHTML
             ) {
-              return context.getElementsByclassNameName(classNameName);
+              return context.getElementsByclassName(className);
             }
           };
 
@@ -1959,24 +1959,17 @@
                 };
           },
 
-          className: function (classNameName) {
-            var pattern = classNameCache[classNameName + ' '];
+          className: function (className) {
+            var pattern = classNameCache[className + ' '];
 
             return (
               pattern ||
               ((pattern = new RegExp(
-                '(^|' +
-                  whitespace +
-                  ')' +
-                  classNameName +
-                  '(' +
-                  whitespace +
-                  '|$)'
+                '(^|' + whitespace + ')' + className + '(' + whitespace + '|$)'
               )) &&
-                classNameCache(classNameName, function (elem) {
+                classNameCache(className, function (elem) {
                   return pattern.test(
-                    (typeof elem.classNameName === 'string' &&
-                      elem.classNameName) ||
+                    (typeof elem.className === 'string' && elem.className) ||
                       (typeof elem.getAttribute !== 'undefined' &&
                         elem.getAttribute('className')) ||
                       ''
@@ -8493,7 +8486,7 @@
 
     propFix: {
       for: 'htmlFor',
-      className: 'classNameName',
+      className: 'className',
     },
   });
 
@@ -8684,41 +8677,41 @@
       }
 
       return this.each(function () {
-        var classNameName, i, self, classNameNames;
+        var className, i, self, classNames;
 
         if (isValidValue) {
           // Toggle individual className names
           i = 0;
           self = jQuery(this);
-          classNameNames = classNameesToArray(value);
+          classNames = classNameesToArray(value);
 
-          while ((classNameName = classNameNames[i++])) {
-            // Check each classNameName given, space separated list
-            if (self.hasclassName(classNameName)) {
-              self.removeclassName(classNameName);
+          while ((className = classNames[i++])) {
+            // Check each className given, space separated list
+            if (self.hasclassName(className)) {
+              self.removeclassName(className);
             } else {
-              self.addclassName(classNameName);
+              self.addclassName(className);
             }
           }
 
           // Toggle whole className name
         } else if (value === undefined || type === 'boolean') {
-          classNameName = getclassName(this);
-          if (classNameName) {
-            // Store classNameName if set
-            dataPriv.set(this, '__classNameName__', classNameName);
+          className = getclassName(this);
+          if (className) {
+            // Store className if set
+            dataPriv.set(this, '__className__', className);
           }
 
           // If the element has a className name or if we're passed `false`,
-          // then remove the whole classNamename (if there was one, the above saved it).
+          // then remove the whole className (if there was one, the above saved it).
           // Otherwise bring back whatever was previously saved (if anything),
           // falling back to the empty string if nothing was stored.
           if (this.setAttribute) {
             this.setAttribute(
               'className',
-              classNameName || value === false
+              className || value === false
                 ? ''
-                : dataPriv.get(this, '__classNameName__') || ''
+                : dataPriv.get(this, '__className__') || ''
             );
           }
         }
@@ -8726,16 +8719,16 @@
     },
 
     hasclassName: function (selector) {
-      var classNameName,
+      var className,
         elem,
         i = 0;
 
-      classNameName = ' ' + selector + ' ';
+      className = ' ' + selector + ' ';
       while ((elem = this[i++])) {
         if (
           elem.nodeType === 1 &&
           (' ' + stripAndCollapse(getclassName(elem)) + ' ').indexOf(
-            classNameName
+            className
           ) > -1
         ) {
           return true;

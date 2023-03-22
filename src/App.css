@@ -1,0 +1,28 @@
+.chart_body {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 28rem;
+  /* margin: 0; */
+  /* flex-wrap: nowrap; */
+}
+
+label {
+  font-size: 0.7rem;
+}
+
+input.form-control,
+input.form-control:focus {
+  background: #f0f0ff;
+}
+
+.error_msg {
+  position: absolute;
+  color: red;
+  font-size: 0.6rem;
+}
+
+.form_center {
+  width: 30rem;
+  margin: 0 auto;
+}

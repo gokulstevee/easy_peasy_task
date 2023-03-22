@@ -8202,7 +8202,7 @@
 
   function createDiv(cls) {
     var el = document.createElement('div');
-    el.classNameName = cls || '';
+    el.className = cls || '';
     return el;
   }
 

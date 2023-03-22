@@ -2049,8 +2049,8 @@
 
       // `className` is a reserved word in Javascript, so we need to provide
       // the ability to use a valid name for the camel case input
-      if (oOptions.classNameName && !oOptions.sclassName) {
-        oOptions.sclassName = oOptions.classNameName;
+      if (oOptions.className && !oOptions.sclassName) {
+        oOptions.sclassName = oOptions.className;
       }
       if (oOptions.sclassName) {
         th.addclassName(oOptions.sclassName);
@@ -3046,7 +3046,7 @@
 
         /* Add user defined className */
         if (oCol.sclassName) {
-          nTd.classNameName += ' ' + oCol.sclassName;
+          nTd.className += ' ' + oCol.sclassName;
         }
 
         // Visibility - add or remove as required
@@ -3523,11 +3523,11 @@
           if (sAttr.indexOf('.') != -1) {
             var aSplit = sAttr.split('.');
             nNewNode.id = aSplit[0].substr(1, aSplit[0].length - 1);
-            nNewNode.classNameName = aSplit[1];
+            nNewNode.className = aSplit[1];
           } else if (sAttr.charAt(0) == '#') {
             nNewNode.id = sAttr.substr(1, sAttr.length - 1);
           } else {
-            nNewNode.classNameName = sAttr;
+            nNewNode.className = sAttr;
           }
 
           i += j; /* Move along the position array */
@@ -9413,7 +9413,7 @@
     /**
      * Cache of the className name that DataTables has applied to the row, so we
      * can quickly look at this variable rather than needing to do a DOM check
-     * on classNameName for the nTr property.
+     * on className for the nTr property.
      *  @type string
      *  @default <i>Empty string</i>
      *  @private

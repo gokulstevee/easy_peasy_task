@@ -1171,17 +1171,17 @@
       var nextElementIndex = this._getItemIndex(nextElement);
 
       var isCycling = Boolean(this._interval);
-      var directionalclassNameName;
-      var orderclassNameName;
+      var directionalclassName;
+      var orderclassName;
       var eventDirectionName;
 
       if (direction === DIRECTION_NEXT) {
-        directionalclassNameName = className_NAME_LEFT;
-        orderclassNameName = className_NAME_NEXT;
+        directionalclassName = className_NAME_LEFT;
+        orderclassName = className_NAME_NEXT;
         eventDirectionName = DIRECTION_LEFT;
       } else {
-        directionalclassNameName = className_NAME_RIGHT;
-        orderclassNameName = className_NAME_PREV;
+        directionalclassName = className_NAME_RIGHT;
+        orderclassName = className_NAME_PREV;
         eventDirectionName = DIRECTION_RIGHT;
       }
 
@@ -1223,29 +1223,23 @@
       if (
         $__default['default'](this._element).hasclassName(className_NAME_SLIDE)
       ) {
-        $__default['default'](nextElement).addclassName(orderclassNameName);
+        $__default['default'](nextElement).addclassName(orderclassName);
         Util.reflow(nextElement);
-        $__default['default'](activeElement).addclassName(
-          directionalclassNameName
-        );
-        $__default['default'](nextElement).addclassName(
-          directionalclassNameName
-        );
+        $__default['default'](activeElement).addclassName(directionalclassName);
+        $__default['default'](nextElement).addclassName(directionalclassName);
         var transitionDuration =
           Util.getTransitionDurationFromElement(activeElement);
         $__default['default'](activeElement)
           .one(Util.TRANSITION_END, function () {
             $__default['default'](nextElement)
-              .removeclassName(
-                directionalclassNameName + ' ' + orderclassNameName
-              )
+              .removeclassName(directionalclassName + ' ' + orderclassName)
               .addclassName(className_NAME_ACTIVE$1);
             $__default['default'](activeElement).removeclassName(
               className_NAME_ACTIVE$1 +
                 ' ' +
-                orderclassNameName +
+                orderclassName +
                 ' ' +
-                directionalclassNameName
+                directionalclassName
             );
             _this4._isSliding = false;
             setTimeout(function () {
@@ -2870,7 +2864,7 @@
 
       if (this._isShown && this._config.backdrop) {
         this._backdrop = document.createElement('div');
-        this._backdrop.classNameName = className_NAME_BACKDROP;
+        this._backdrop.className = className_NAME_BACKDROP;
 
         if (animate) {
           this._backdrop.classNameList.add(animate);
@@ -3064,7 +3058,7 @@
     _proto._getScrollbarWidth = function _getScrollbarWidth() {
       // thx d.walsh
       var scrollDiv = document.createElement('div');
-      scrollDiv.classNameName = className_NAME_SCROLLBAR_MEASURER;
+      scrollDiv.className = className_NAME_SCROLLBAR_MEASURER;
       document.body.appendChild(scrollDiv);
       var scrollbarWidth =
         scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth;

@@ -17,6 +17,8 @@ import UpdateProduct from './components/UpdateProduct';
 import { Link, Route, Routes } from 'react-router-dom';
 import Main from './components/Main';
 import { createStore, StoreProvider } from 'easy-peasy';
+import Chart from './components/Chart';
+import Login from './components/CreateAccount';
 
 const store = createStore(model);
 
@@ -31,7 +33,7 @@ const App = () => {
           {/* <!-- Sidebar - Brand --> */}
           <a
             className="sidebar-brand d-flex align-items-center justify-content-center"
-            href="index.html"
+            href="/"
           >
             <div className="sidebar-brand-icon rotate-n-15">
               <i className="fas fa-laugh-wink"></i>
@@ -46,45 +48,37 @@ const App = () => {
 
           {/* <!-- Nav Item - Dashboard --> */}
           <li className="nav-item">
-            <a className="nav-link" href="index.html">
-              <i className="fas fa-fw fa-tachometer-alt"></i>
+            <Link class="nav-link" to={'/'}>
               <span>Panel</span>
-            </a>
+            </Link>
+          </li>
+
+          <li className="nav-item">
+            <Link class="nav-link" to={'/login'}>
+              <span>Create Account</span>
+            </Link>
+          </li>
+
+          <li className="nav-item">
+            <Link class="nav-link" to={'/user'}>
+              <span>Users</span>
+            </Link>
+          </li>
+
+          <li className="nav-item">
+            <Link class="nav-link" to={'/product'}>
+              <span>Products</span>
+            </Link>
+          </li>
+
+          <li class="nav-item">
+            <Link class="nav-link" to={'/chart'}>
+              <span>Charts</span>
+            </Link>
           </li>
 
           {/* <!-- Divider --> */}
           <hr className="sidebar-divider" />
-
-          <li>
-            <Link
-              className="btn btn-primary"
-              type="button"
-              style={{
-                margin: '2.7rem',
-                marginLeft: '2.9rem',
-                backgroundColor: 'white',
-                color: '#4e73df',
-              }}
-              to={'/user'}
-            >
-              View User
-            </Link>
-          </li>
-
-          {/* <!-- Divider --> */}
-          <hr className="sidebar-divider d-none d-md-block" />
-          <li>
-            <Link
-              className="btn btn-warning"
-              style={{
-                margin: '2.5rem',
-                color: '#4e73df',
-              }}
-              to={'/product'}
-            >
-              View Product
-            </Link>
-          </li>
         </ul>
         {/* <!-- End of Sidebar --> */}
 
@@ -421,6 +415,8 @@ const App = () => {
                 <Route path="/product/" element={<Product />} />
                 <Route path="/product/create" element={<CreateProductForm />} />
                 <Route path="/product/update/:id" element={<UpdateProduct />} />
+                <Route path="/chart" element={<Chart />} />
+                <Route path="/login" element={<Login />} />
               </Routes>
             </div>
             {/* <!-- /.container-fluid --> */}

@@ -44,8 +44,8 @@ function UpdateUser() {
   }
 
   return (
-    <Form classNameName="container">
-      <Form.Group classNameName="mb-3" controlId="formBasicEmail">
+    <Form className="form_center">
+      <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Update Name</Form.Label>
         <Form.Control
           type="text"
@@ -57,7 +57,7 @@ function UpdateUser() {
           value={name}
         />
       </Form.Group>
-      <Form.Group classNameName="mb-3" controlId="formBasicEmail">
+      <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label> Update Phone Number</Form.Label>
         <Form.Control
           type="number"
