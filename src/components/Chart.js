@@ -57,7 +57,7 @@ const Chart = () => {
 
   return (
     <>
-      <h1 className="my-4 text-center font-weight-bold ">Create Account</h1>
+      <h1 className="my-4 text-center font-weight-bold ">Charts</h1>
       <div className="chart_body">
         <div style={{ width: 500 }}>
           <BarChart chartData={userData} />
